@@ -1,0 +1,19 @@
+{
+  "name": "birdbox",
+  "version": "1.0.0",
+  "description": "bindings, made out of frustration for Nest's camera systems",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^1.2.2",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-tslint": "^0.2.2",
+    "rollup-plugin-typescript": "^1.0.0",
+    "rollup-plugin-uglify": "^6.0.2",
+    "typescript": "^3.3.3333"
+  },
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c"
+  }
+}
