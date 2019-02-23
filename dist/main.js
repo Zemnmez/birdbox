@@ -37,7 +37,7 @@
 	    }
 	    async toggleMic(page) {
 	        const micButton = ".player-button.talkback";
-	        await page.show.waitForSelector(micButton);
+	        await page.show.waitForSelector(micButton, { visible: true });
 	        await page.show.click(micButton);
 	    }
 	    async fill2fa(page) {
@@ -102,7 +102,6 @@
 	        const cameraLink = 'a[href^="/camera"]';
 	        await page.show.waitForSelector(cameraLink);
 	        await page.show.click(cameraLink);
-	        await this.toggleMic(page);
 	        await this.toggleMic(page);
 	    }
 	    async run() {

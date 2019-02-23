@@ -51,7 +51,7 @@ class BirdBox {
 
 	async toggleMic(page) {
 		const micButton = ".player-button.talkback"
-		await page.show.waitForSelector(micButton);
+		await page.show.waitForSelector(micButton, { visible: true });
 		await page.show.click(micButton);
 	}
 
@@ -130,7 +130,6 @@ class BirdBox {
 		await page.show.waitForSelector(cameraLink);
 		await page.show.click(cameraLink);
 
-		await this.toggleMic(page);
 		await this.toggleMic(page);
 	}
 
