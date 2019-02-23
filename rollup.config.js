@@ -1,7 +1,6 @@
 import typescript from 'rollup-plugin-typescript';
 //import tslint from 'rollup-plugin-tslint';
 import resolve from 'rollup-plugin-node-resolve';
-import { uglify } from 'rollup-plugin-uglify';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -9,7 +8,7 @@ export default {
   input: "src/main.ts",
   output: {
     file: "dist/main.js",
-    format: "umd",
+    format: "iife",
     sourcemap: true,
     banner: "#!/usr/bin/env/node"
   },
@@ -18,7 +17,6 @@ export default {
     /*tslint({
       throwOnError: true
     }),*/
-    typescript({ lib: ["es5", "es6"], target: "es5" }),
-    production && uglify()
+    typescript({ lib: ["esNext", "DOM", "DOM.Iterable", "ScriptHost"], target: "esNext" })
   ]
 }
