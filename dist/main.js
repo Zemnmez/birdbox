@@ -35,6 +35,11 @@
 	            }
 	        });
 	    }
+	    async toggleMic(page) {
+	        const micButton = ".player-button.talkback";
+	        await page.show.waitForSelector(micButton);
+	        await page.show.click(micButton);
+	    }
 	    async fill2fa(page) {
 	        const mfaFields = ".mfa-fields input";
 	        await page.show.waitForSelector(mfaFields);
@@ -97,6 +102,8 @@
 	        const cameraLink = 'a[href^="/camera"]';
 	        await page.show.waitForSelector(cameraLink);
 	        await page.show.click(cameraLink);
+	        await this.toggleMic(page);
+	        await this.toggleMic(page);
 	    }
 	    async run() {
 	        // is chrome canary installled and can we access it?
@@ -104,7 +111,16 @@
 	        const browser = await puppeteer.launch({
 	            headless: process.env.NODE_ENV == 'production',
 	            userDataDir: "./browser_data",
-	            executablePath: chromeCanaryPath
+	            executablePath: chromeCanaryPath,
+	            dumpio: true,
+	            args: [
+	                // prevents showing user confirmation we cant click
+	                // to use the mic
+	                "--use-fake-ui-for-media-stream",
+	                "--use-fake-device-for-media-stream",
+	                // plays a test sound instead of using a real mic
+	                "--use-file-for-fake-audio-capture=dist/wii-shop-music.wav"
+	            ]
 	        });
 	        try {
 	            const page = await browser.newPage();
