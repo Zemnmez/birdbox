@@ -1,0 +1,22 @@
+{
+  "name": "audio stream capture",
+  "version": "1.0",
+  "description": "captures audio in a tab to a stream",
+  "permissions": [
+    "tabCapture",
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": {
+    "matches": [
+      "https://home.nest.com/*"
+    ],
+
+    "js": ["contentScript.js"]
+  },
+
+  "manifest_version": 2
+}
